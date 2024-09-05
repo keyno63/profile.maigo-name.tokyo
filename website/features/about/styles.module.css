@@ -6,3 +6,10 @@
     align-items: center;
     position: relative;
 }
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
