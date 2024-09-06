@@ -5,15 +5,13 @@ import styles from "@/features/about/styles.module.css"
 export default function CarrierHistory() {
     return (
         <section className={styles.history}>
-            <div>
-                <h2 className={styles.history_title}>History</h2>
-                {carriers.map((carrier) => (
-                        <HistoryElement
-                            name={carrier.name}
-                            start={carrier.start}
-                            descriptions={carrier.descriptions}/>
-                ))}
-            </div>
+            <h2 className={styles.history_title}>History</h2>
+            {carriers.map((carrier) => (
+                    <HistoryElement
+                        name={carrier.name}
+                        start={carrier.start}
+                        descriptions={carrier.descriptions}/>
+            ))}
         </section>
     )
 }
