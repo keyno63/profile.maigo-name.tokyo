@@ -115,6 +115,90 @@
     margin-top: 1em;
 }
 
+/* セクション全体のスタイル */
+.skills_section {
+    border-radius: 10px;
+    color: white;
+}
+
+.skills_container {
+    padding-top: 20px;
+    border-radius: 15px;
+    border-color: black;
+    /*margin: 0 auto;*/
+}
+
+/* グリッドレイアウト */
+.skills_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* 各スキルボックスのスタイル */
+.skill_box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.skill_box_odd {
+    background-color: #f28b82;
+}
+
+.skill_box_even {
+    background-color: white;
+    color: black;
+}
+
+/* 空のボックスに対するスタイル */
+.skill_box:empty {
+    background-color: transparent;
+    border: none;
+}
+
+/* 吹き出しのスタイル */
+.tooltip {
+    position: absolute;
+    top: 110%; /* ボックスの下に表示 */
+    left: 80%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    min-width: 200px;
+    max-width: 350px;
+    white-space: pre-wrap;
+    text-align: center;
+    font-size: 14px;
+}
+
+.tooltip:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 30%;
+    transform: translateX(-30%);
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent; /* 吹き出しの三角形 */
+}
+
+/* 空のボックスに対するスタイル */
+.skill-box:empty {
+    background-color: transparent;
+    border: none;
+}
+
 .carrier_name {
     font-weight: bold;
 }
