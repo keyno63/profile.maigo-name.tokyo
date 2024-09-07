@@ -3,7 +3,7 @@ export default function Icons() {
         <div>
             <div className={undefined}>
                 <img
-                    src="./icon.jpg"
+                    src="/icon.jpg"
                     alt="My Icon"
                     width={80}
                     height={80}
