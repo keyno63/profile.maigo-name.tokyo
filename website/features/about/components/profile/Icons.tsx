@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import iconImage from '@/app/icon.jpg';
-
 export default function Icons() {
     return (
         <div>
