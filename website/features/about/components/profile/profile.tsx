@@ -7,7 +7,7 @@ export const Profile = () => {
             <div className={styles.profile}>
                 <Icons/>
                 <div className={styles.profile_contents}>
-                    <p className={styles.section_title}>Who am I?</p>
+                    <h2 className={styles.section_title}>Who am I?</h2>
                     <p className={styles.content_}>名前：</p>
                     <p className={styles.content_}>ハンドルネーム: 名前迷子/keyno63</p>
                     <p className={styles.content_}></p>
