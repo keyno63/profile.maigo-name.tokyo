@@ -7,6 +7,9 @@
   --background-start-rgb: 230, 255, 245;
   --background-end-rgb: 250, 255, 250;
   --border-line: 255, 255, 255;
+  --box-red: #E4002B;
+  --box-white: white;
+  --box-white-backgroud: black;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -43,7 +43,7 @@ export default function SkillSet() {
                 {paddedSkills.map((skill, index) => (
                     <div
                         key={index}
-                        className={`${styles.skill_box} ${index % 2 === 0 ? styles.skill_box_odd : styles.skill_box_even}`}
+                        className={`${styles.skill_box} ${(index % 2 === 0 ? styles.line_odd : styles.line_even)} ${(Math.floor(index / 4) % 2 === 0) ? styles.row_odd : styles.row_even}`}
                         onClick={() => skill.skillName && setActiveSkill(skill.skillName)} // クリックで吹き出しをトグル
                     >
                         <span>{skill.skillName}</span>
