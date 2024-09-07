@@ -6,10 +6,10 @@ import React, {useEffect, useRef, useState} from "react";
 
 export default function SkillSet() {
     // activeなスキルの追跡
-    const [activeSkill, setActiveSkill] = useState(null);
-    const tooltipRef = useRef(null);
+    const [activeSkill, setActiveSkill] = useState<any|null>(null);
+    const tooltipRef = useRef<HTMLDivElement | null>(null);
 
-    const toggleTooltip = (skillName) => {
+    const toggleTooltip = (skillName: React.SetStateAction<null>) => {
         if (activeSkill === skillName) {
             setActiveSkill(null);
         } else {
@@ -19,7 +19,7 @@ export default function SkillSet() {
 
     // クリックイベントを監視し、吹き出しの外側をクリックした場合に閉じる
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: { target: any; }) => {
             if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
                 setActiveSkill(null); // 吹き出しを閉じる
             }
