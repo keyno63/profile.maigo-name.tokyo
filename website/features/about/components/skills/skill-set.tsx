@@ -60,7 +60,7 @@ export default function SkillSet() {
 
     return (
         <section className={`${styles.skill} ${styles.skills_section}`}>
-                <h2 className={undefined}>Skills</h2>
+                <h2 className={styles.section_title}>Skills</h2>
                 <div className={styles.skills_container}>
                     <h4>Program Languages</h4>
                     {renderSkillsGrid(programLanguages)}
