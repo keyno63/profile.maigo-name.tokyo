@@ -47,9 +47,9 @@ export default function SkillSet() {
                         onClick={() => skill.skillName && setActiveSkill(skill.skillName)} // クリックで吹き出しをトグル
                     >
                         <span>{skill.skillName}</span>
-                        {activeSkill === skill.skillName && skill.skillName && (
+                        {activeSkill === skill.skillName && skill.skillName  && (
                             <div className={styles.tooltip} ref={tooltipRef}>
-                                <p>{skill.description}</p>
+                                <p>{skill.description ? skill.description : "No Description" }</p>
                             </div>
                         )}
                     </div>
