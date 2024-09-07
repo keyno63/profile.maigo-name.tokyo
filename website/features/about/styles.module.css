@@ -127,6 +127,10 @@
     z-index: 15;
 }
 
+.element_wrapper:last-of-type .element_joint:after {
+    height: calc(100% - var(--top-margin) * 2);
+}
+
 .date {
     margin-bottom: 2px;
 }
