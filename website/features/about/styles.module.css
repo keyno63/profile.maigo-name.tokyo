@@ -47,7 +47,7 @@
 .history {
     padding: 60px 20px;
     min-height: 50vh;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 1em;
     position: relative;
     z-index: 0;
