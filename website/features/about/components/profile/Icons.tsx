@@ -5,8 +5,8 @@ export default function Icons() {
                 <img
                     src="/icon.jpg"
                     alt="My Icon"
-                    width={80}
-                    height={80}
+                    width={120}
+                    height={120}
                 />
             </div>
         </div>
