@@ -49,6 +49,8 @@
     min-height: 50vh;
     justify-content: center;
     margin-top: 1em;
+    position: relative;
+    z-index: 0;
 }
 
 .history_title {
