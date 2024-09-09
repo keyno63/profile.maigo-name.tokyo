@@ -11,6 +11,8 @@
   --box-red: #E4002B;
   --box-white: white;
   --box-white-backgroud: black;
+  --color-header: #3A6A6A;
+  --color-on-header: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
