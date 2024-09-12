@@ -15,7 +15,8 @@ export const carriers: Carrier[] = [
         name: "Webサービス",
         start: "2019/03",
         descriptions: [
-            "現職。Webのサーバーサイドエンジニア・バックエンドエンジニアとして従事",
+            "現職",
+            "Webのサーバーサイドエンジニア・バックエンドエンジニアとして従事",
         ]
     },
     {
