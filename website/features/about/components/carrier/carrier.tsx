@@ -28,7 +28,7 @@ export const carriers: Carrier[] = [
         ]
     },
     {
-        name: "大阪府立大学院大学（現・大阪公立大学）",
+        name: "大阪府立大学・大学院（現・大阪公立大学）",
         start: "2008/04",
         descriptions: [
             "大学・大学院時代は物性物理学の実験を専攻"
