@@ -2,6 +2,7 @@
 *.bloop
 *.metals
 *.ammonite
+metals.sbt
 project/project/
 target/
 
