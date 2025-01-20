@@ -9,7 +9,7 @@ inThisBuild(
 lazy val root = (project in file("."))
   .settings(
     assembly / mainClass := Some("tokyo.keyno63.profile.backend.AppServer"),
-    assembly / assemblyJarName := "calc-hash-site-backend.jar",
+    assembly / assemblyJarName := "profile-backend.jar",
     libraryDependencies ++= Seq(
       // zio/http
       "dev.zio" %% "zio-http" % "3.0.1",
