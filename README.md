@@ -25,6 +25,8 @@ flyctl auth login
 
 ### deploy
 
+In the First time, Use `fly launch`
+
 - website
 ```
 cd website
@@ -32,6 +34,18 @@ flyctl launch
 ```
 
 use deploy setting fly.toml.
+
+- backend
+```
+cd backend
+flyctl launch --dockerfile ./Dockerfile
+```
+
+Re-deploy, Use `fly deploy`
+
+```
+fly deploy
+```
 
 ## LICENSE
 
