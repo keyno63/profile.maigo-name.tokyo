@@ -7,6 +7,7 @@ import zio.http.Method
 object AppServer extends ZIOAppDefault {
 
     private val routes = Routes(
+        Method.GET / Root -> handler(Response.text("Root")),
         Method.GET / "hello" -> handler(Response.text("Hello, World!"))
     )
 
