@@ -1,0 +1,18 @@
+app = "maigo-name-postgres"        # ←ユニークな名前に
+primary_region = "nrt"
+
+[build]
+  dockerfile = "./Dockerfile"
+
+# 永続化：後述の volume を /var/lib/postgresql/data にマウント
+[[mounts]]
+  source = "pg_data"
+  destination = "/var/lib/postgresql/data"
+
+# （公開しない）→ [[services]] や [http_service] は不要
+# 同一Org内から `maigo-name-postgres.internal:5432` で到達できます
+
+[[vm]]
+  memory = "512mb"         # 開発用途は512MB〜1GB目安
+  cpu_kind = "shared"
+  cpus = 1
