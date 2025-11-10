@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS health (
     "date"      INTEGER     NOT NULL,
     weight_kg   NUMERIC(5,2),
     kilocalorie INTEGER     NOT NULL,
-    "status"    TEXT        NOT NULL,
+    "status"    INTEGER        NOT NULL,
     recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CONSTRAINT pk_health PRIMARY KEY (user_id, recorded_at),
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS health (
 );
 
 CREATE TABLE IF NOT EXISTS "status" (
-    id   INTEGER         PRIMARY KEY,
-    "value"    TEXT        NOT NULL,
+    id         INTEGER         PRIMARY KEY,
+    "value"    INTEGER        NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    update_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
