@@ -31,6 +31,7 @@ jspm_packages/
 # Environment variables
 .env
 .env.test
+secrets/postgres_password.txt
 
 # IDEs and editors
 .vscode/
