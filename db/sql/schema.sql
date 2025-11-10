@@ -28,4 +28,13 @@ CREATE TABLE IF NOT EXISTS health (
     CONSTRAINT fk_health_user
         FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
+    CONSTRAINT fk_status
+        FOREIGN KEY ("status") REFERENCES "status"("value")
+);
+
+CREATE TABLE IF NOT EXISTS "status" (
+    id   INTEGER         PRIMARY KEY,
+    "value"    TEXT        NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
