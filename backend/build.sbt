@@ -13,11 +13,12 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       // zio/http
       "dev.zio" %% "zio-http" % "3.0.1",
+      "dev.zio" %% "zio-json" % "0.7.3",
 
       // test
       "org.scalatest" %% "scalatest" % "3.2.19" % Test,
     )
-)
+  )
 
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF", _*) => MergeStrategy.discard
