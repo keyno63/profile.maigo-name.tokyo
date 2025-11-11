@@ -31,5 +31,7 @@ ARG GROUPNAME=scala
 ARG GROUPID=2000
 RUN groupadd -g ${GROUPID} ${GROUPNAME} && \
     useradd -m -s /bin/bash -u ${GROUPID} -g ${GROUPNAME} ${USERNAME}
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 USER $USERNAME
-ENTRYPOINT ["/opt/java/openjdk/bin/java", "-jar", "/opt/profile-backend.jar"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
