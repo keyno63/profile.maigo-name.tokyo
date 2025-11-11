@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
       // zio/http
       "dev.zio" %% "zio-http" % "3.0.1",
       "dev.zio" %% "zio-json" % "0.7.3",
+      "org.postgresql" % "postgresql" % "42.7.4",
 
       // test
       "org.scalatest" %% "scalatest" % "3.2.19" % Test,
