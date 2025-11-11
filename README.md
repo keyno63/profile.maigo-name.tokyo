@@ -47,6 +47,19 @@ Re-deploy, Use `fly deploy`
 fly deploy
 ```
 
+- db
+
+```
+cd db
+flyctl launch --dockerfile ./Dockerfile
+```
+
+Re-deploy, Use `fly deploy`
+
+```
+fly deploy
+```
+
 ## LICENSE
 
 Licensed under the [Apache License Version2](./LISENCE)
