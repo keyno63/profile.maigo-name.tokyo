@@ -2,7 +2,7 @@ package tokyo.keyno63.profile.backend
 
 import tokyo.keyno63.profile.backend.healthcare.controller.HealthcareController
 import tokyo.keyno63.profile.backend.healthcare.model.HealthcareJsonCodec.given
-import tokyo.keyno63.profile.backend.healthcare.repository.HealthcareRepositorySample
+import tokyo.keyno63.profile.backend.healthcare.repository.{HealthcareRepository, HealthcareRepositoryPostgres, HealthcareRepositorySample}
 import tokyo.keyno63.profile.backend.healthcare.service.HealthcareServiceLive
 import zio._
 import zio.http._
@@ -11,8 +11,19 @@ import zio.json.EncoderOps
 
 object AppServer extends ZIOAppDefault {
 
+    private val healthcareRepository: HealthcareRepository =
+        HealthcareRepositoryPostgres
+            .fromEnvironment()
+            .fold(
+                err => {
+                    _root_.java.lang.System.err.println(s"[HealthcareRepository] $err. Falling back to sample data.")
+                    HealthcareRepositorySample()
+                },
+                identity
+            )
+
     private val healthcareController =
-        HealthcareController(HealthcareServiceLive(HealthcareRepositorySample()))
+        HealthcareController(HealthcareServiceLive(healthcareRepository))
 
     private[backend] val routes = Routes(
         Method.GET / Root -> handler(Response.text("Root")),

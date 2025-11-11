@@ -1,7 +1,5 @@
 package tokyo.keyno63.profile.backend.healthcare.model
 
-import java.time.{LocalDate, OffsetDateTime}
-
 import zio.json._
 
 final case class MealCalories(
@@ -9,33 +7,38 @@ final case class MealCalories(
     lunch: Int,
     dinner: Int,
     snacks: Int
+) {
+  def withCalories(status: Int, calories: Int): MealCalories =
+    status match {
+      case 0 => copy(breakfast = calories)
+      case 1 => copy(lunch = calories)
+      case 2 => copy(dinner = calories)
+      case 3 => copy(snacks = calories)
+      case _ => this
+    }
+}
+
+object MealCalories {
+  val empty: MealCalories = MealCalories(0, 0, 0, 0)
+}
+
+final case class DailyHealth(
+    date: Int,
+    weightKg: Int,
+    calories: MealCalories
 )
 
-final case class HealthcareTimelineEntry(
-    recordedAt: OffsetDateTime,
-    weightKg: Double
-)
-
-final case class DailyHealthcareSummary(
-    date: LocalDate,
-    weightKg: Double,
-    calories: MealCalories,
-    timeline: List[HealthcareTimelineEntry]
+final case class HealthResponse(
+    health: List[DailyHealth]
 )
 
 object HealthcareJsonCodec {
-  given JsonEncoder[LocalDate] = JsonEncoder[String].contramap(_.toString)
-  given JsonDecoder[LocalDate] = JsonDecoder[String].map(LocalDate.parse)
-
-  given JsonEncoder[OffsetDateTime] = JsonEncoder[String].contramap(_.toString)
-  given JsonDecoder[OffsetDateTime] = JsonDecoder[String].map(OffsetDateTime.parse)
-
   given JsonEncoder[MealCalories] = DeriveJsonEncoder.gen[MealCalories]
   given JsonDecoder[MealCalories] = DeriveJsonDecoder.gen[MealCalories]
 
-  given JsonEncoder[HealthcareTimelineEntry] = DeriveJsonEncoder.gen[HealthcareTimelineEntry]
-  given JsonDecoder[HealthcareTimelineEntry] = DeriveJsonDecoder.gen[HealthcareTimelineEntry]
+  given JsonEncoder[DailyHealth] = DeriveJsonEncoder.gen[DailyHealth]
+  given JsonDecoder[DailyHealth] = DeriveJsonDecoder.gen[DailyHealth]
 
-  given JsonEncoder[DailyHealthcareSummary] = DeriveJsonEncoder.gen[DailyHealthcareSummary]
-  given JsonDecoder[DailyHealthcareSummary] = DeriveJsonDecoder.gen[DailyHealthcareSummary]
+  given JsonEncoder[HealthResponse] = DeriveJsonEncoder.gen[HealthResponse]
+  given JsonDecoder[HealthResponse] = DeriveJsonDecoder.gen[HealthResponse]
 }

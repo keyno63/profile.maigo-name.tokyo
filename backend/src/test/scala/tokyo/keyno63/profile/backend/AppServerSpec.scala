@@ -3,7 +3,7 @@ package tokyo.keyno63.profile.backend
 import org.scalatest.OptionValues
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import tokyo.keyno63.profile.backend.healthcare.model.{DailyHealthcareSummary, HealthcareJsonCodec}
+import tokyo.keyno63.profile.backend.healthcare.model.{HealthResponse, HealthcareJsonCodec}
 import zio.http.{Request, Status, URL}
 import zio.json.DecoderOps
 import zio.{Runtime, Trace, Unsafe, ZIO}
@@ -44,13 +44,13 @@ class AppServerSpec extends AnyWordSpec with Matchers with OptionValues {
       response.status shouldBe Status.Ok
       val jsonBody = unsafeRun(response.body.asString)
 
-      val parsed = jsonBody.fromJson[List[DailyHealthcareSummary]]
+      val parsed = jsonBody.fromJson[HealthResponse]
       parsed.isRight shouldBe true
 
-      val records = parsed.toOption.value
-      records should not be empty
-      all(records.map(_.calories.breakfast)) should be >= 0
-      records.head.timeline should not be empty
+      val response = parsed.toOption.value
+      response.health should not be empty
+      val firstDay = response.health.head
+      firstDay.calories.breakfast should be >= 0
     }
   }
 }
