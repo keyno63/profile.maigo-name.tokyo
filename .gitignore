@@ -5,6 +5,11 @@
 metals.sbt
 project/project/
 target/
+**/target/
+.sbtboot/
+.sbt-global/
+.ivy2/
+sbt.boot.lock
 
 # Node.js
 node_modules/
@@ -47,3 +52,6 @@ Thumbs.db
 dist/
 build/
 out/
+
+# for working local
+memo/
