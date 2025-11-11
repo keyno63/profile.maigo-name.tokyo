@@ -16,6 +16,14 @@ CREATE TABLE IF NOT EXISTS authentication (
         ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS "status" (
+    id         INTEGER     PRIMARY KEY,
+    "value"    INTEGER     NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    update_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    CONSTRAINT uq_status_value UNIQUE ("value")
+);
+
 CREATE TABLE IF NOT EXISTS health (
     user_id     TEXT        NOT NULL,
     "date"      INTEGER     NOT NULL,
@@ -27,14 +35,7 @@ CREATE TABLE IF NOT EXISTS health (
     CONSTRAINT pk_health PRIMARY KEY (user_id, recorded_at),
     CONSTRAINT fk_health_user
         FOREIGN KEY (user_id) REFERENCES users(id)
-        ON DELETE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT fk_status
         FOREIGN KEY ("status") REFERENCES "status"("value")
-);
-
-CREATE TABLE IF NOT EXISTS "status" (
-    id         INTEGER         PRIMARY KEY,
-    "value"    INTEGER        NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    update_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
