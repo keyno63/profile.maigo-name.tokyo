@@ -63,3 +63,5 @@ CREATE TABLE IF NOT EXISTS carrier (
     CONSTRAINT fk_carrier_user
         FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS skills ()
