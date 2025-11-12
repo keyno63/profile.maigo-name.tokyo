@@ -1,5 +1,9 @@
 \connect maigowebdb;
 
+-- =====================================================================
+-- COMMONS
+-- =====================================================================
+
 CREATE TABLE IF NOT EXISTS users (
     id         TEXT PRIMARY KEY,
     "name"     TEXT        NOT NULL,
@@ -8,13 +12,17 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS authentication (
-    user_id         TEXT        PRIMARY KEY,
-    hashed_password TEXT        NOT NULL,
+    user_id         TEXT PRIMARY KEY,
+    hashed_password TEXT NOT NULL,
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CONSTRAINT fk_auth_user
         FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
 );
+
+-- =====================================================================
+-- HEALTHCARE
+-- =====================================================================
 
 CREATE TABLE IF NOT EXISTS "status" (
     id         INTEGER     PRIMARY KEY,
@@ -29,7 +37,7 @@ CREATE TABLE IF NOT EXISTS health (
     "date"      INTEGER     NOT NULL,
     weight_kg   NUMERIC(5,2),
     kilocalorie INTEGER     NOT NULL,
-    "status"    INTEGER        NOT NULL,
+    "status"    INTEGER     NOT NULL,
     recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CONSTRAINT pk_health PRIMARY KEY (user_id, recorded_at),
@@ -38,4 +46,20 @@ CREATE TABLE IF NOT EXISTS health (
         ON DELETE CASCADE,
     CONSTRAINT fk_status
         FOREIGN KEY ("status") REFERENCES "status"("value")
+);
+
+-- =====================================================================
+-- HISTORY
+-- =====================================================================
+
+CREATE TABLE IF NOT EXISTS carrier (
+    id          INTEGER     PRIMARY KEY,
+    user_id     TEXT        NOT NULL,
+    belonging   TEXT,
+    "description" TEXT,
+    start_at    TEXT,
+    end_at      TEXT,
+    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    CONSTRAINT fk_carrier_user
+        FOREIGN KEY (user_id) REFERENCES users(id)
 );
