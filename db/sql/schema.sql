@@ -5,7 +5,7 @@
 -- =====================================================================
 
 CREATE TABLE IF NOT EXISTS users (
-    id         TEXT PRIMARY KEY,
+    id         TEXT        PRIMARY KEY,
     "name"     TEXT        NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     update_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -53,15 +53,13 @@ CREATE TABLE IF NOT EXISTS health (
 -- =====================================================================
 
 CREATE TABLE IF NOT EXISTS carrier (
-    id          INTEGER     PRIMARY KEY,
-    user_id     TEXT        NOT NULL,
-    belonging   TEXT,
+    id            INTEGER     PRIMARY KEY,
+    user_id       TEXT        NOT NULL,
+    belonging     TEXT,
     "description" TEXT,
-    start_at    TEXT,
-    end_at      TEXT,
-    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    start_at      TEXT,
+    end_at        TEXT,
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CONSTRAINT fk_carrier_user
         FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-CREATE TABLE IF NOT EXISTS skills ()
