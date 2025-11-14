@@ -48,6 +48,16 @@ CREATE TABLE IF NOT EXISTS health (
         FOREIGN KEY ("status") REFERENCES "status"("value")
 );
 
+CREATE TABLE IF NOT EXISTS physical (
+    user_id      TEXT        NOT NULL,
+    "weight"     TEXT        NOT NULL,
+    recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    update_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    CONSTRAINT fk_physical_user
+        FOREIGN KEY (user_id) REFERENCES users(id)
+        ON DELETE CASCADE,
+)
+
 -- =====================================================================
 -- HISTORY
 -- =====================================================================
