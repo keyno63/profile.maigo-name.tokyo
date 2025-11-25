@@ -4,6 +4,7 @@ import org.scalatest.OptionValues
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import tokyo.keyno63.profile.backend.healthcare.model.{HealthResponse, HealthcareJsonCodec}
+import tokyo.keyno63.profile.backend.history.model.{HistoryJsonCodec, HistoryResponse}
 import zio.http.{Request, Status, URL}
 import zio.json.DecoderOps
 import zio.{Runtime, Trace, Unsafe, ZIO}
@@ -11,6 +12,7 @@ import zio.{Runtime, Trace, Unsafe, ZIO}
 class AppServerSpec extends AnyWordSpec with Matchers with OptionValues {
 
   import HealthcareJsonCodec.given
+  import HistoryJsonCodec.given
 
   given Trace = Trace.empty
 
@@ -51,6 +53,20 @@ class AppServerSpec extends AnyWordSpec with Matchers with OptionValues {
       response.health should not be empty
       val firstDay = response.health.head
       firstDay.calories.breakfast should be >= 0
+    }
+
+    "return history records for GET /history" in {
+      val response = runRequest(URL.root / "history")
+
+      response.status shouldBe Status.Ok
+      val jsonBody = unsafeRun(response.body.asString)
+
+      val parsed = jsonBody.fromJson[HistoryResponse]
+      parsed.isRight shouldBe true
+
+      val history = parsed.toOption.value
+      history.carriers should not be empty
+      history.carriers.head.belonging should not be empty
     }
   }
 }

@@ -1,39 +1,13 @@
 package tokyo.keyno63.profile.backend.healthcare.repository
 
+import tokyo.keyno63.profile.backend.database.DatabaseConfig
 import tokyo.keyno63.profile.backend.healthcare.model.{DailyHealth, MealCalories}
 
 import java.math.RoundingMode
-import java.nio.file.{Files, Paths}
 import java.sql.DriverManager
 import org.postgresql.util.PSQLException
 import scala.collection.mutable.ListBuffer
 import scala.util.Using
-
-final case class DatabaseConfig(url: String, user: String, password: String)
-
-object DatabaseConfig {
-  def fromEnvironment(env: Map[String, String] = sys.env): Either[String, DatabaseConfig] = {
-    val url  = env.get("DATABASE_URL").filter(_.nonEmpty).toRight("DATABASE_URL is not set")
-    val user = env.get("DATABASE_USER").filter(_.nonEmpty).toRight("DATABASE_USER is not set")
-
-    val passwordFile = env.get("DATABASE_PASSWORD_FILE").filter(_.nonEmpty)
-    val passwordEnv  = env.get("DATABASE_PASSWORD").filter(_.nonEmpty)
-
-    val password = passwordFile
-      .flatMap(readSecretFile)
-      .orElse(passwordEnv)
-      .getOrElse("")
-
-    for {
-      jdbcUrl  <- url
-      username <- user
-    } yield DatabaseConfig(jdbcUrl, username, password)
-  }
-
-  private def readSecretFile(path: String): Option[String] =
-    try Some(Files.readString(Paths.get(path)).trim)
-    catch { case _: Throwable => None }
-}
 
 final class HealthcareRepositoryPostgres(config: DatabaseConfig) extends HealthcareRepository {
   private val MealStatusAliases = Map(
