@@ -1,6 +1,7 @@
 import GitHubIcon from '@mui/icons-material/GitHub'
 import XIcon from '@mui/icons-material/X';
 import BookIcon from '@mui/icons-material/Book';
+import SvgIcon from '@mui/material/SvgIcon';
 
 export default function Icons() {
     return (
@@ -34,7 +35,13 @@ export default function Icons() {
                     href="https://zenn.dev/maigo_name"
                     target="_blank"
                 >
-                    <BookIcon fontSize="medium"/>
+                    <SvgIcon fontSize="medium" viewBox="0 0 24 24">
+                        <image
+                            href="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/zenn.svg"
+                            width="24"
+                            height="24"
+                        />
+                    </SvgIcon>
                 </a>
                 <a
                     href="https://lapras.com/public/0KCZQVD"
