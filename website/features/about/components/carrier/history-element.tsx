@@ -19,16 +19,20 @@ export default function HistoryElement(carrier: Carrier) {
                 />
                 <div className={styles.element_joint}></div>
             </div>
-            <div className={`${styles.element_body} ${!isOpen ? styles.element_body_closed : ""}`}>
-                <div className={styles.date}>{carrier.start}-</div>
-                <p className={styles.carrier_name}>
-                    {carrier.name}
-                </p>
-                {carrier.descriptions?.map((description, index) =>
-                    <p key={`${carrier.start}-${index}`} className={styles.carrier_description}>
-                        {description}
-                    </p>)
-                }
+            <div className={styles.element_body}>
+                <div className={styles.element_header}>
+                    <div className={styles.date}>{carrier.start}-</div>
+                    <p className={styles.carrier_name}>
+                        {carrier.name}
+                    </p>
+                </div>
+                <div className={`${styles.element_details} ${!isOpen ? styles.element_details_closed : ""}`}>
+                    {carrier.descriptions?.map((description, index) =>
+                        <p key={`${carrier.start}-${index}`} className={styles.carrier_description}>
+                            {description}
+                        </p>)
+                    }
+                </div>
             </div>
         </div>
     )

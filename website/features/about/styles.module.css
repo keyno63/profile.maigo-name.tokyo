@@ -82,19 +82,26 @@
     padding: 1em;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    max-height: 30em;
-    opacity: 1;
     border-bottom: 2px solid gray;
-    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease, border-color 0.2s ease;
 }
 
-.element_body_closed {
+.element_header {
+    display: flex;
+    flex-direction: column;
+}
+
+.element_details {
+    overflow: hidden;
+    max-height: 24em;
+    opacity: 1;
+    margin-top: 0.2em;
+    transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.2s ease;
+}
+
+.element_details_closed {
     max-height: 0;
     opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-bottom-color: transparent;
+    margin-top: 0;
     pointer-events: none;
 }
 
