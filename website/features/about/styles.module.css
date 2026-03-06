@@ -233,28 +233,21 @@
     font-weight: bold;
 }
 
+.skill_box_red {
+    background-color: var(--box-red);
+    color: white;
+}
+
+.skill_box_white {
+    background-color: var(--box-white);
+    color: var(--box-white-backgroud);
+}
+
 .skill_box_empty {
     background-color: transparent !important;
     border: none;
+    color: inherit !important;
     pointer-events: none;
-}
-
-.row_odd.line_odd {
-    background-color: var(--box-red);
-}
-
-.row_odd.line_even {
-    background-color: var(--box-white);
-    color: var(--box-white-backgroud);
-}
-
-.row_even.line_odd {
-    background-color: var(--box-white);
-    color: var(--box-white-backgroud);
-}
-
-.row_even.line_even {
-    background-color: var(--box-red);
 }
 
 /* 空のボックスに対するスタイル */

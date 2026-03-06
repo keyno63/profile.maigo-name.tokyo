@@ -7,6 +7,7 @@ import React, {useEffect, useRef, useState} from "react";
 export default function SkillSet() {
     const [activeSkill, setActiveSkill] = useState<any | null>(null);
     const tooltipRef = useRef<HTMLDivElement | null>(null);
+    const [columnCount, setColumnCount] = useState(4);
 
     useEffect(() => {
         const handleClickOutside = (event: { target: any }) => {
@@ -21,18 +22,40 @@ export default function SkillSet() {
         };
     }, []);
 
+    useEffect(() => {
+        const updateColumns = () => {
+            if (window.innerWidth <= 600) {
+                setColumnCount(2);
+                return;
+            }
+            if (window.innerWidth <= 900) {
+                setColumnCount(3);
+                return;
+            }
+            setColumnCount(4);
+        };
+
+        updateColumns();
+        window.addEventListener("resize", updateColumns);
+        return () => window.removeEventListener("resize", updateColumns);
+    }, []);
+
     const renderSkillsGrid = (skills: Skill[]) => {
         const paddedSkills = [...skills];
-        while (paddedSkills.length % 4 !== 0) {
+        while (paddedSkills.length % columnCount !== 0) {
             paddedSkills.push({ skillName: "", description: "" });
         }
 
         return (
             <div className={styles.skills_grid}>
-                {paddedSkills.map((skill, index) => (
+                {paddedSkills.map((skill, index) => {
+                    const row = Math.floor(index / columnCount);
+                    const col = index % columnCount;
+                    const isRed = (row + col) % 2 === 0;
+                    return (
                     <div
                         key={index}
-                        className={`${styles.skill_box} ${(index % 2 === 0 ? styles.line_odd : styles.line_even)} ${(Math.floor(index / 4) % 2 === 0) ? styles.row_odd : styles.row_even} ${!skill.skillName ? styles.skill_box_empty : ""}`}
+                        className={`${styles.skill_box} ${isRed ? styles.skill_box_red : styles.skill_box_white} ${!skill.skillName ? styles.skill_box_empty : ""}`}
                         onClick={() => skill.skillName && setActiveSkill(skill.skillName)}
                     >
                         {skill.skillName && <span>{skill.skillName}</span>}
@@ -42,7 +65,8 @@ export default function SkillSet() {
                             </div>
                         )}
                     </div>
-                ))}
+                    );
+                })}
             </div>
         );
     };
