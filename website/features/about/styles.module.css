@@ -82,38 +82,73 @@
     padding: 1em;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    max-height: 30em;
+    opacity: 1;
     border-bottom: 2px solid gray;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease, border-color 0.2s ease;
+}
+
+.element_body_closed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom-color: transparent;
+    pointer-events: none;
 }
 
 .element_body:after {
     border-bottom: 2px solid white;
 }
 
-.triangle_right:before {
+.triangle_button {
+    position: absolute;
+    top: calc(var(--top-margin) + 0.1em);
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--marker-size);
+    height: var(--marker-size);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 6;
+}
+
+.triangle_button::before {
     position: absolute;
     z-index: 5;
-    top: var(--top-margin);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2em;
-    height: 2em;
+    inset: 0;
+    width: var(--marker-size);
+    height: var(--marker-size);
     content: '';
+    background: linear-gradient(135deg, #d4d4d4 0%, var(--color-joint-bar) 75%);
+    clip-path: polygon(0 14%, 100% 50%, 0 86%, 24% 50%);
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.14));
+    transform-origin: 50% 50%;
+    transition: transform 0.2s ease;
+}
 
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 22px solid var(--color-joint-bar);
-    background-color: transparent;
+.triangle_button[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+}
+
+.triangle_button:focus-visible {
+    outline: 2px solid #5d8dee;
+    outline-offset: 2px;
 }
 
 .triangle_right {
     grid-area: left;
     --top-margin: 1.5em;
+    --marker-size: 1.7em;
     --color-joint-bar: #C8C8C8;
     --joint-left: 25%;
     position: relative;
     display: flex;
     justify-content: center;
+    min-height: calc(var(--top-margin) + var(--marker-size) + 0.6em);
 }
 
 .element_joint::before {
@@ -131,7 +166,7 @@
 .element_joint:after {
     content: '';
     position: absolute;
-    top: calc(var(--top-margin) + 2em);
+    top: calc(var(--top-margin) + var(--marker-size));
     height: calc(100% - var(--top-margin));
     left: var(--joint-left);
     transform: translateX(-50%);

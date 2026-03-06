@@ -8,6 +8,7 @@ export default function CarrierHistory() {
             <h2 className={styles.history_title}>History</h2>
             {carriers.map((carrier) => (
                     <HistoryElement
+                        key={`${carrier.start}-${carrier.name}`}
                         name={carrier.name}
                         start={carrier.start}
                         descriptions={carrier.descriptions}/>
