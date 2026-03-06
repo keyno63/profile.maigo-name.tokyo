@@ -211,9 +211,10 @@
 /* グリッドレイアウト */
 .skills_grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     margin-top: 20px;
+    align-items: stretch;
 }
 
 /* 各スキルボックスのスタイル */
@@ -222,11 +223,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80px;
-    max-height: 100px;
+    height: 84px;
+    padding: 0.5rem 0.4rem;
     border-radius: 10px;
-    font-size: 18px;
+    text-align: center;
+    line-height: 1.2;
+    word-break: break-word;
+    font-size: clamp(0.85rem, 1.8vw, 1.125rem);
     font-weight: bold;
+}
+
+.skill_box_empty {
+    background-color: transparent !important;
+    border: none;
+    pointer-events: none;
 }
 
 .row_odd.line_odd {
@@ -251,6 +261,24 @@
 .skill_box:empty {
     background-color: transparent;
     border: none;
+}
+
+@media (max-width: 900px) {
+    .skills_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .skills_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .skill_box {
+        height: 72px;
+        font-size: clamp(0.78rem, 3.3vw, 0.95rem);
+    }
 }
 
 /* 吹き出しのスタイル */
