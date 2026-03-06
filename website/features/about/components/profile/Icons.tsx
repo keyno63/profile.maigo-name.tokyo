@@ -29,7 +29,13 @@ export default function Icons() {
                     href="https://www.maigo-name.tokyo/"
                     target="_blank"
                 >
-                    <BookIcon fontSize="medium"/>
+                    <SvgIcon fontSize="medium" viewBox="0 0 24 24">
+                        <image
+                            href="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/hatenabookmark.svg"
+                            width="24"
+                            height="24"
+                        />
+                    </SvgIcon>
                 </a>
                 <a
                     href="https://zenn.dev/maigo_name"
