@@ -1,42 +1,24 @@
-import Link from "next/link";
+import styles from "./styles.module.css";
 
-type menuItem = {
-    label: string
-    href: string
-}
+type MenuItem = {
+    label: string;
+};
 
-const menus = [
-    {
-        label: "About",
-        href: "/",
-    },
-    {
-        label: "Blog",
-        href: "/blog",
-    },
-    {
-        label: "Contact",
-        href: "/contact",
-    },
-]
+const menus: MenuItem[] = [
+    { label: "About" },
+    { label: "Contact" },
+];
 
 export default function Menu() {
-
-    return <div className={undefined}>
-        <div className={undefined}>
-            {menus.map((menu) => {
-                return <MenuItem key={menu.label} {...menu}></MenuItem>
-            })}
-        </div>
-    </div>
-}
-
-function MenuItem(props: menuItem) {
     return (
-        <div>
-            <Link href={props.href} as={props.href}>
-                {props.label}
-            </Link>
-        </div>
-    )
+        <nav className={styles.menu_bar} aria-label="Main menu">
+            <div className={styles.menu_inner}>
+                {menus.map((menu) => (
+                    <button key={menu.label} type="button" className={styles.menu_item}>
+                        {menu.label}
+                    </button>
+                ))}
+            </div>
+        </nav>
+    );
 }
