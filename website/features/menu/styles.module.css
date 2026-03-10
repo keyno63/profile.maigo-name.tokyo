@@ -1,0 +1,29 @@
+.menu_bar {
+    width: 100%;
+    margin: 0 auto 8px;
+    display: flex;
+    justify-content: center;
+    background: var(--color-header);
+}
+
+.menu_inner {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px 10px;
+}
+
+.menu_item {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgb(255 255 255 / 0.35);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.12);
+    color: var(--color-on-header);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 10px 16px;
+    text-decoration: none;
+}
