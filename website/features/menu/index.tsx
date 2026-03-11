@@ -1,12 +1,14 @@
+import Link from "next/link";
 import styles from "./styles.module.css";
 
 type MenuItem = {
     label: string;
+    href: string;
 };
 
 const menus: MenuItem[] = [
-    { label: "About" },
-    { label: "Contact" },
+    { label: "About", href: "/" },
+    { label: "Contact", href: "/contact" },
 ];
 
 export default function Menu() {
@@ -14,9 +16,9 @@ export default function Menu() {
         <nav className={styles.menu_bar} aria-label="Main menu">
             <div className={styles.menu_inner}>
                 {menus.map((menu) => (
-                    <button key={menu.label} type="button" className={styles.menu_item}>
+                    <Link key={menu.label} href={menu.href} className={styles.menu_item}>
                         {menu.label}
-                    </button>
+                    </Link>
                 ))}
             </div>
         </nav>

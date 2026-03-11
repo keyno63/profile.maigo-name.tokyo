@@ -14,7 +14,7 @@ export const ContactPage: React.FC = () => {
                             Email
                         </a>
                         <a
-                            href="https://x.com/sample_account"
+                            href="https://x.com/maigo_name"
                             target="_blank"
                             rel="noreferrer"
                             className={styles.contact_button}
@@ -22,25 +22,6 @@ export const ContactPage: React.FC = () => {
                             X
                         </a>
                     </div>
-
-                    <div className={styles.form_grid}>
-                        <label className={styles.field}>
-                            <span>Name</span>
-                            <input type="text" placeholder="Your name" disabled />
-                        </label>
-                        <label className={styles.field}>
-                            <span>Email</span>
-                            <input type="email" placeholder="name@example.com" disabled />
-                        </label>
-                        <label className={styles.field_message}>
-                            <span>Message</span>
-                            <textarea placeholder="Type your message..." rows={5} disabled />
-                        </label>
-                    </div>
-
-                    <button type="button" className={styles.submit_button} disabled>
-                        Send (Sample)
-                    </button>
                 </section>
             </div>
         </div>
