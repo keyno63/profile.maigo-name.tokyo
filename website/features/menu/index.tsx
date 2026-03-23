@@ -9,6 +9,7 @@ type MenuItem = {
 const menus: MenuItem[] = [
     { label: "About", href: "/" },
     { label: "Contact", href: "/contact" },
+    { label: "Contents", href: "/contents" },
 ];
 
 export default function Menu() {
