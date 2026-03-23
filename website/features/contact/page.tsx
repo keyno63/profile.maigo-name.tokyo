@@ -11,7 +11,7 @@ export const ContactPage: React.FC = () => {
                     </p>
                     <div className={styles.contact_actions}>
                         <a href="mailto:sample@example.com" className={styles.contact_button}>
-                            Email
+                            Email (Not Ready)
                         </a>
                         <a
                             href="https://x.com/maigo_name"
