@@ -73,17 +73,17 @@ export default function SkillSet() {
 
     return (
         <section className={`${styles.skill} ${styles.skills_section}`}>
-            <h2 className={styles.section_title}>Skills</h2>
+            <h2 className={styles.section_title}>Skills &amp; Experience</h2>
             <div className={styles.skills_container}>
-                <h4>Program Languages</h4>
+                <h3>Programming Languages</h3>
                 {renderSkillsGrid(programLanguages)}
             </div>
             <div className={styles.skills_container}>
-                <h4>Dev</h4>
+                <h3>Development &amp; Infrastructure</h3>
                 {renderSkillsGrid(devs)}
             </div>
             <div className={styles.skills_container}>
-                <h4>Others</h4>
+                <h3>Team &amp; Tools</h3>
                 {renderSkillsGrid(others)}
             </div>
         </section>

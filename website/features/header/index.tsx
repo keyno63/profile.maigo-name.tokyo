@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <div className={styles.header}>
             <h1 className={styles.title}>
-                maigo_name profile
+                名前迷子 / keyno63
             </h1>
         </div>
     )

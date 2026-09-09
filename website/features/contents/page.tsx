@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./styles.module.css";
 
 /*
@@ -39,11 +38,20 @@ const sitePages: ComponentItem[] = [
 
 const categories: LinkCategory[] = [
     {
-        id: "sample",
-        title: "Sample",
-        description: "準備中",
+        id: "writing",
+        title: "Writing",
+        description: "技術や日々の試行錯誤について書いています。",
         items: [
-            { label: "Blog Top", href: "https://www.maigo-name.tokyo/", note: "main" },
+            { label: "Blog", href: "https://www.maigo-name.tokyo/", note: "個人ブログ" },
+            { label: "Zenn", href: "https://zenn.dev/maigo_name", note: "技術記事" },
+        ],
+    },
+    {
+        id: "development",
+        title: "Development",
+        description: "個人開発やOSSでの活動を公開しています。",
+        items: [
+            { label: "GitHub", href: "https://github.com/keyno63", note: "ソースコード" },
         ],
     },
 ];
@@ -54,14 +62,14 @@ export const ContentsPage: React.FC = () => {
             <div className={styles.contents_wrapper}>
                 <section className={styles.directory_section}>
                     <header className={styles.section_header}>
-                        <h2>Directory</h2>
+                        <h2>Links</h2>
                         <p className={styles.description}>
-                            共有したいコンテンツ一覧です。現在準備中。
+                            記事や開発活動へのリンクをまとめています。
                         </p>
                     </header>
 
                     <div className={styles.toc_panel}>
-                        <h3 className={styles.toc_title}>Contents</h3>
+                        <h3 className={styles.toc_title}>Categories</h3>
                         <ul className={styles.toc_list}>
                             {/*<li>*/}
                             {/*    <span className={styles.toc_heading}>Site Pages</span>*/}
