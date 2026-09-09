@@ -45,6 +45,42 @@
     font-size: 14px;
 }
 
+/* now */
+.now_section {
+    margin-top: 1em;
+}
+
+.now_contents {
+    width: 80%;
+    margin: 0.75em auto 0;
+    font-size: 14px;
+}
+
+.now_contents p + p {
+    margin-top: 0.75em;
+}
+
+.updated_at {
+    text-align: right;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.now_list {
+    margin-top: 0.5em;
+    padding-inline-start: 1.5em;
+    list-style: disc;
+}
+
+.now_list li {
+    padding-inline-start: 0.25em;
+    line-height: 1.7;
+}
+
+.now_list li + li {
+    margin-top: 0.25em;
+}
+
 /* carrier/history */
 @container (max-width: 500px) {
     .wrapper {
@@ -199,6 +235,13 @@
 .skills_section {
     border-radius: 10px;
     color: white;
+}
+
+.skills_guide {
+    margin: 0.75em auto 0;
+    width: 80%;
+    text-align: center;
+    font-size: 0.875rem;
 }
 
 .skills_container {

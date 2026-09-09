@@ -74,6 +74,9 @@ export default function SkillSet() {
     return (
         <section className={`${styles.skill} ${styles.skills_section}`}>
             <h2 className={styles.section_title}>Skills &amp; Experience</h2>
+            <p className={styles.skills_guide}>
+                スキルを選択すると、経験内容や使用場面を確認できます。
+            </p>
             <div className={styles.skills_container}>
                 <h3>Programming Languages</h3>
                 {renderSkillsGrid(programLanguages)}
