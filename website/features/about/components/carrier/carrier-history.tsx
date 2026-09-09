@@ -5,7 +5,7 @@ import styles from "@/features/about/styles.module.css"
 export default function CarrierHistory() {
     return (
         <section className={styles.history}>
-            <h2 className={styles.history_title}>History</h2>
+            <h2 className={styles.history_title}>Career</h2>
             {carriers.map((carrier) => (
                     <HistoryElement
                         key={`${carrier.start}-${carrier.name}`}
