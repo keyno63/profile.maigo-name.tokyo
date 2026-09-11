@@ -45,6 +45,8 @@ object AppServer extends ZIOAppDefault {
 
     private[backend] val routes = Routes(
         Method.GET / Root -> handler(Response.text("Root")),
+        Method.GET / "health" / "live" -> handler(Response.text("implemented now")),
+        Method.GET / "health" / "ready" -> handler(Response.text("implemented now")),
         Method.GET / "hello" -> handler(Response.text("Hello, World!")),
         Method.GET / "healthcare" / "daily" -> handler {
             Response.json(healthcareController.dailySummaries().toJsonPretty)
